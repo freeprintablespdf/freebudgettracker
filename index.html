@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#F6F0E5" />
+
+  <title>Free Monthly Budget Tracker - Track Income &amp; Expenses Online</title>
+  <meta name="description" content="Free monthly budget tracker to plan income, expenses &amp; savings. No sign-up, 100% private. Track your budget monthly with charts and export to CSV." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,600;9..40,700&display=swap" rel="stylesheet">
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"SoftwareApplication","name":"Free Monthly Budget Tracker","applicationCategory":"FinanceApplication","operatingSystem":"Web","offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},"description":"Free monthly budget tracker to plan income, expenses & savings online."}
+  </script>
+
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+    {"@type":"Question","name":"Is this monthly budget tracker really free?","acceptedAnswer":{"@type":"Answer","text":"Yes, 100% free forever. No premium plans, no sign-up, no hidden fees."}},
+    {"@type":"Question","name":"How do I track my monthly budget effectively?","acceptedAnswer":{"@type":"Answer","text":"Use the 50/30/20 rule. Allocate 50% of your income to needs, 30% to wants, and 20% to savings."}},
+    {"@type":"Question","name":"Is my financial data safe?","acceptedAnswer":{"@type":"Answer","text":"Yes. All your data is saved in your local browser storage, not on our servers."}},
+    {"@type":"Question","name":"Can I use this for zero-based budgeting?","acceptedAnswer":{"@type":"Answer","text":"Yes. This tool is built for zero-based budgeting."}},
+    {"@type":"Question","name":"What is the difference between a budget planner and an expense tracker?","acceptedAnswer":{"@type":"Answer","text":"A budget planner plans money before you spend, an expense tracker records what you already spent."}},
+    {"@type":"Question","name":"Can I save my budget for next month?","acceptedAnswer":{"@type":"Answer","text":"Yes, click Duplicate for Next Month and your categories will be copied."}},
+    {"@type":"Question","name":"Can I export my budget data?","acceptedAnswer":{"@type":"Answer","text":"Yes. Download your monthly budget as a CSV file with one click."}},
+    {"@type":"Question","name":"Does this budget tracker work offline?","acceptedAnswer":{"@type":"Answer","text":"Yes. Once the page has loaded you can add expenses and edit your budget without internet."}}
+  ]}
+  </script>
+
+  <style>
+    :root{
+      --cream:#F6F0E5;--paper:#FFFDF8;--soft:#FBF6EC;
+      --ink:#3A2A1E;--ink-soft:#6B584A;--muted:#9C8A79;
+      --line:#E7DCCB;--brown:#6B4F3A;--tan:#B99B7B;
+      --clay:#B4674A;--olive:#6D7A52;--frame:#241C16;
+      --serif: Georgia, "Iowan Old Style", "Times New Roman", serif;
+      --sans: 'DM Sans', ui-sans-serif, system-ui, -apple-system, sans-serif;
+    }
+    *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+    html{-webkit-text-size-adjust:100%}
+    html,body{margin:0;padding:0}
+    body{font-family:var(--sans);background:var(--cream);color:var(--ink);
+      min-height:100dvh;overflow-x:hidden;-webkit-font-smoothing:antialiased;line-height:1.6}
+
+    .masthead{max-width:720px;margin:0 auto;padding:72px 24px 28px}
+    .tagline{margin:0 0 14px;font-size:.7rem;font-weight:500;letter-spacing:.18em;
+      text-transform:uppercase;color:var(--muted)}
+    .masthead h1{margin:0 0 16px;font-family:var(--serif);
+      font-size:clamp(2rem,5vw,2.65rem);line-height:1.15;letter-spacing:-.02em;
+      font-weight:400;color:var(--ink)}
+    .lede{margin:0;max-width:54ch;color:var(--muted);font-size:1.02rem;line-height:1.65}
+
+    .top-section{
+      background-image:radial-gradient(120% 60% at 50% 0%, #F4EADA 0%, #EADCC6 45%, var(--cream) 100%);
+    }
+    .app-hero{display:flex;align-items:center;justify-content:center;gap:28px;padding:32px 16px 72px}
+
+    .ad-rail{flex:0 0 160px;width:160px;height:600px;
+      display:flex;align-items:center;justify-content:center;border-radius:14px;
+      overflow:hidden;background:rgba(255,253,248,.32);border:1px solid rgba(231,220,203,.7);
+      box-shadow:0 14px 34px -22px rgba(58,42,30,.55)}
+    .ad-slot{width:160px;height:600px;overflow:hidden}
+    .ad-slot iframe{display:block;border:0;width:160px;height:600px}
+
+    .phone-mock{position:relative;flex:0 0 440px;width:440px;max-width:100%;
+      background:var(--frame);border:11px solid var(--frame);border-radius:52px;
+      box-shadow:0 1px 0 rgba(255,255,255,.14) inset,
+        0 34px 70px -22px rgba(58,42,30,.6),
+        0 10px 24px rgba(58,42,30,.22);
+      overflow:hidden;isolation:isolate}
+    .phone-mock::before{content:"";position:absolute;top:12px;left:50%;transform:translateX(-50%);
+      width:104px;height:26px;background:var(--frame);border-radius:999px;
+      z-index:10;pointer-events:none}
+    .phone-mock::after{content:"";position:absolute;bottom:10px;left:50%;transform:translateX(-50%);
+      width:130px;height:4px;background:rgba(36,28,22,.85);border-radius:999px;
+      z-index:10;pointer-events:none}
+    .phone-mock iframe{display:block;width:100%;height:600px;border:0;
+      background:var(--cream);border-radius:41px !important}
+
+    .post{max-width:720px;margin:0 auto;padding:56px 24px 88px}
+    .post h2{margin:52px 0 14px;font-family:var(--serif);font-size:1.38rem;
+      font-weight:400;letter-spacing:-.01em;color:var(--ink)}
+    .post h2:first-child{margin-top:0}
+    .post p{margin:0 0 16px;color:var(--ink-soft);line-height:1.75}
+
+    .features{list-style:none;margin:0 0 16px;padding:0;display:grid;gap:12px}
+    .features li{position:relative;padding-left:18px;color:var(--ink-soft)}
+    .features li::before{content:"";position:absolute;left:0;top:.72em;width:8px;height:1px;background:var(--brown)}
+    .features strong{color:var(--ink);font-weight:600}
+
+    .steps{list-style:none;counter-reset:step;margin:0 0 16px;padding:0;display:grid;gap:14px}
+    .steps li{counter-increment:step;display:grid;grid-template-columns:26px 1fr;gap:12px;color:var(--ink-soft)}
+    .steps li::before{content:counter(step);display:grid;place-items:center;width:24px;height:24px;
+      border:1px solid var(--line);border-radius:50%;font-family:var(--serif);font-size:.78rem;
+      color:var(--brown);font-variant-numeric:tabular-nums}
+    .steps strong{color:var(--ink);font-weight:600}
+
+    .post details{border-top:1px solid var(--line);padding:16px 0}
+    .post details:last-of-type{border-bottom:1px solid var(--line)}
+    .post summary{display:flex;justify-content:space-between;align-items:baseline;gap:16px;
+      cursor:pointer;font-weight:550;color:var(--ink);list-style:none;font-size:.98rem}
+    .post summary::-webkit-details-marker{display:none}
+    .post summary::after{content:"+";color:var(--brown);font-weight:400;font-size:1.15rem;
+      line-height:1;transition:transform .15s ease}
+    .post details[open] summary::after{content:"\2013"}
+    .post details p{margin:10px 0 0;color:var(--ink-soft)}
+
+    .site-footer{max-width:720px;margin:0 auto;padding:32px 24px 56px;
+      border-top:1px solid var(--line);font-size:.85rem;color:var(--muted);line-height:1.9}
+    .site-footer a{color:var(--ink-soft);text-decoration:none;transition:color .15s ease}
+    .site-footer a:hover{color:var(--brown);text-decoration:underline;text-underline-offset:3px}
+    .site-footer p{margin:12px 0 0;font-size:.78rem;color:var(--muted)}
+
+    @media (max-width:900px){.ad-rail{display:none}}
+
+    @media (max-width:560px){
+      .masthead{padding:48px 20px 20px}
+      .app-hero{padding:16px 12px 40px;gap:0}
+      .phone-mock{flex:1 1 100%;width:100%;border-width:8px;border-radius:40px;
+        box-shadow:0 20px 40px -18px rgba(58,42,30,.4)}
+      .phone-mock::before{top:9px;width:80px;height:20px}
+      .phone-mock::after{bottom:8px;width:100px;height:3px}
+      .phone-mock iframe{border-radius:32px !important;height:620px}
+      .post{padding:40px 20px 64px}
+      .site-footer{padding:24px 20px 48px}
+      .post h2{font-size:1.25rem}
+    }
+
+    @media (prefers-reduced-motion:reduce){
+      *{animation-duration:.01ms !important;animation-iteration-count:1 !important;
+        transition-duration:.01ms !important}
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="top-section">
+
+    <header class="masthead">
+      <p class="tagline">Free · Private · No sign-up</p>
+      <h1>Free Monthly Budget Tracker</h1>
+      <p class="lede">
+        Take control of your money in 2 minutes. Track monthly income, expenses, and savings
+        with a simple, private budget planner. No login required — all data stays in your
+        browser. Works on mobile &amp; desktop.
+      </p>
+    </header>
+
+    <div class="app-hero">
+
+      <aside class="ad-rail ad-left" aria-hidden="true">
+        <div class="ad-slot">
+          <script>
+            atOptions = {'key':'188cc698faf8d5a47737978a872b8fe7','format':'iframe','height':600,'width':160,'params':{}};
+          </script>
+          <script src="https://bauval.org/22/188cc698faf8d5a47737978a872b8fe7"></script>
+        </div>
+      </aside>
+
+      <div class="phone-mock">
+        <iframe
+          src="https://budgetapptracker.blogspot.com/"
+          width="100%"
+          height="600px"
+          name="myiFrame"
+          scrolling="no"
+          style="border: none"
+          loading="lazy"
+          allowfullscreen
+          sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-popups-to-escape-sandbox allow-downloads">
+        </iframe>
+      </div>
+
+      <aside class="ad-rail ad-right" aria-hidden="true">
+        <div class="ad-slot">
+          <script>
+            atOptions = {'key':'188cc698faf8d5a47737978a872b8fe7','format':'iframe','height':600,'width':160,'params':{}};
+          </script>
+          <script src="https://bauval.org/22/188cc698faf8d5a47737978a872b8fe7"></script>
+        </div>
+      </aside>
+
+    </div>
+  </div>
+
+  <article class="post">
+
+    <h2>What is a Monthly Budget Tracker?</h2>
+    <p>
+      A monthly budget tracker is a simple tool to plan where your money goes before the
+      month begins. Instead of wondering where your salary went, you allocate every
+      rupee/dollar to needs, wants, savings, and bills.
+    </p>
+    <p>
+      Our free budget tracker app helps you create a zero-based budget, track daily
+      spending, and see exactly how much you have left to spend. Unlike complex Excel
+      sheets, it automatically calculates your total income, total expenses, and remaining
+      balance.
+    </p>
+
+    <h2>Key Features</h2>
+    <ul class="features">
+      <li><strong>100% Private &amp; Secure:</strong> Your budget data never leaves your device. We don't store anything on servers.</li>
+      <li><strong>Zero-Based Budgeting:</strong> Assign every dollar of income to a category until income − expenses = 0.</li>
+      <li><strong>Monthly Overview with Charts:</strong> See spending breakdown with pie charts and savings progress.</li>
+      <li><strong>Export &amp; Save:</strong> Download your monthly budget as CSV or save as PDF. Load last month's data in one click.</li>
+      <li><strong>Works Offline:</strong> Add expenses even without internet. Perfect for daily tracking on mobile.</li>
+    </ul>
+
+    <h2>How to Use This Budget Tracker in 3 Steps</h2>
+    <ol class="steps">
+      <li><span><strong>Add Your Income:</strong> Enter your monthly salary and any extra income for the month.</span></li>
+      <li><span><strong>Add Expense Categories:</strong> Add rent, groceries, bills, transport, etc. and set a budget for each.</span></li>
+      <li><span><strong>Track Daily:</strong> As you spend, enter the amount. See your remaining budget update instantly.</span></li>
+    </ol>
+
+    <h2>Frequently Asked Questions</h2>
+
+    <details>
+      <summary>Is this monthly budget tracker really free?</summary>
+      <p>Yes, 100% free forever. No premium plans, no sign-up, no hidden fees. We built it to be a simple alternative to paid apps like YNAB and Mint.</p>
+    </details>
+
+    <details>
+      <summary>How do I track my monthly budget effectively?</summary>
+      <p>Use the 50/30/20 rule. Allocate 50% of your income to needs, 30% to wants, and 20% to savings. Our tracker lets you create these categories and see if you are over budget in real-time.</p>
+    </details>
+
+    <details>
+      <summary>Is my financial data safe?</summary>
+      <p>Yes. This is a browser-based tracker. All your data is saved in your localStorage, not on our servers. No one can see your budget, not even us.</p>
+    </details>
+
+    <details>
+      <summary>Can I use this for zero-based budgeting?</summary>
+      <p>Yes. This tool is built for zero-based budgeting. Your goal is to make Income − Expenses − Savings = 0, so every dollar has a job.</p>
+    </details>
+
+    <details>
+      <summary>What is the difference between a budget planner and an expense tracker?</summary>
+      <p>A budget planner plans money before you spend, an expense tracker records what you already spent. Our app does both — you plan your budget at the start of the month and track expenses daily.</p>
+    </details>
+
+    <details>
+      <summary>Can I save my budget for next month?</summary>
+      <p>Yes, click "Duplicate for Next Month" and your categories will be copied. You can also export your data to CSV.</p>
+    </details>
+
+    <details>
+      <summary>Can I export my budget data?</summary>
+      <p>Yes. Download your monthly budget as a CSV file with one click. Every category, the total expenses, the income and the remaining balance are included.</p>
+    </details>
+
+    <details>
+      <summary>Does this budget tracker work offline?</summary>
+      <p>Yes. Once the page has loaded you can add expenses and edit your budget without internet. Your data is stored locally in your browser.</p>
+    </details>
+
+  </article>
+
+  <!-- ====================== FOOTER — CORRECTED LINKS ====================== -->
+  <footer class="site-footer">
+    <a href="about.html">About</a> |
+    <a href="contactus.html">Contact</a> |
+    <a href="privacypolicy.html">Privacy Policy</a> |
+    <a href="termsandconditions.html">Terms &amp; Conditions</a>
+    <p>© 2026 Free Monthly Budget Tracker. All rights reserved.</p>
+  </footer>
+
+  <!-- Backup listener — harmless, opens ad if the Blogspot app sends the message -->
+  <script>
+  (function () {
+    'use strict';
+    const AD_URL = 'https://uplcm.com/4/12204251';
+    window.addEventListener('message', function (e) {
+      if (e.data && e.data.type === 'pocketpals:csv-click') {
+        try {
+          const w = window.open(AD_URL, '_blank');
+          if (w) { try { w.opener = null; } catch (err) {} }
+        } catch (err) {}
+      }
+    });
+  })();
+  </script>
+
+</body>
+</html>
